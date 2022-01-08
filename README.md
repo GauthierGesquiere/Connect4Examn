@@ -1,5 +1,4 @@
 # **Connect 4 Game**
-## ** some text **
 I made this project for my GamePlay Programming Examn!
 School: HOWEST - DEA - second year
 
@@ -36,3 +35,5 @@ When this worked I had a semi smart bot/AI. The only problem is that you can eas
 
 Now I wanted to use the minimax algorithm. I found a pseudocode on the wikipedia so it was not that hard to implement. With this algorithm the AI is way smarter. It can look in the future, you only have to change the depth. The depth desides how ***far in the future it can look*** this algorithm is (O^n). This means its a slow algorithm but smart.
 Because this is an slow algorithm I searched for ways to reduce the time it needs to find the best column. I found the ***alpha-beta pruning*** method. This elminates branches that won't change the score, so this help a lot in time!
+
+##**Minimax Algorithm**
