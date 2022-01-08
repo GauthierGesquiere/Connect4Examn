@@ -11,7 +11,7 @@ The goal is to connect 4 disk/coins either horizontally, vertically or diagonall
 First I had to make a connect 4 game, without an AI just the basic two player game. Each turn you switch from player1 to player2.
 I made this in the framework of Programming 1. I used this framework because it's easy to implement simple graphical shapes(squares and ellipses).
 
-But first I made it without graphics, I used the command prompt to print an 6x7 array. And used the 1-7 keys on tthe keyboard to insert the disk.
+But first I made it without graphics, I used the command prompt to print an 6x7 array. And used the 1-7 keys on the keyboard to insert the disk.
 When this worked propperly I wanted to make a connect 4 board. And some animation, the disk hovers over the board when its your turn.
 Here I had a problem that the rows of the array are inverted with the rows of the board. So I had to find a way to invert these Cells on my board.
 
@@ -29,10 +29,10 @@ I calculate the score if the board has a 3 in a row then I add 5 to the score. i
 If the board has a 4 in a row this means the AI can win if he'd place the disk in this column, I add 9999 to the score. If the enemy/Player1 has 3 in a row I substract 4.
 I return the score.
 
-So nw I have ascoring system. Then I decided to make an AI that makes choices in this boardstate. So he does not look in the future (I don't use the minimax function ***yet***).
+So now I have a scoring system. Then I decided to make an AI that makes choices in this boardstate. So he does not look in the future (I don't use the minimax function ***yet***).
 I check this function for every column that isn't full. When I loop over every column I know wich one is the best to place the disk ***in this boardstate***.
 
-When this worked I had a semi smart bot/AI. The only problem is that you can easily trick him, becasue he cannot look in the future. But it just looks at the best column for that moment.
+When this worked I had a semi smart bot/AI. The only problem is that you can easily trick him, becasue he cannot look in the future. It just finds the best column for that moment.
 
-Now I wanted to use the minimax algorithm. I found a pseudocode on the wikipedia so it was not that hard to implement. With this algorithm the AI is way smarter. It can look in the future, you only have to change the depth. The depth desides how ***far in the future it can look*** this algorithm is (O^n). This is a slow algorithm but smart.
-Because this is an slow algorithm i searched for ways to reduce the time it needs. I found the ***alpha-beta pruning*** method. This elminates branches that won't change the sore, so this help a lot in time!
+Now I wanted to use the minimax algorithm. I found a pseudocode on the wikipedia so it was not that hard to implement. With this algorithm the AI is way smarter. It can look in the future, you only have to change the depth. The depth desides how ***far in the future it can look*** this algorithm is (O^n). This means its a slow algorithm but smart.
+Because this is an slow algorithm I searched for ways to reduce the time it needs to find the best column. I found the ***alpha-beta pruning*** method. This elminates branches that won't change the score, so this help a lot in time!
