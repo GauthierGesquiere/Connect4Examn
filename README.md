@@ -90,4 +90,4 @@ function alphabeta(node, depth, α, β, maximizingPlayer) is
 ```
 
 ## **Finnished Game/AI**
-After I implemented these algorithms I had a finnishing game/AI. I could only win once, since my AI is way to smart for me.
+After I implemented these algorithms I had a finnished game/AI. I could only win once, since my AI is way to smart for me.
