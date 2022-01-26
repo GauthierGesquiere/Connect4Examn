@@ -1,8 +1,10 @@
 #pragma once
 using namespace utils;
+
+
 #pragma region gameInformation
 // Set your name and group in the title here
-std::string g_WindowTitle{ "Prog1DAE09_Q39_Gesquiere_Gauthier, Gauthier, Gesquiere - 1DAE09" };
+std::string g_WindowTitle{ "Connect4, Examn, Gauthier, Gesquiere - 2GD06" };
 
 // Declare your own global variables here
 float g_SquareSize = 100;
@@ -24,10 +26,13 @@ bool g_ClickedMouse = false;
 
 float g_MouseXPosition = g_WindowWidth / 2;
 
+float g_Depth = 5;
+
 enum class Turn
 {
 	Player1,
-	Player2
+	Player2,
+	AI
 };
 Turn g_Turn = Turn::Player1;
 
@@ -40,13 +45,20 @@ enum class GridCell
 GridCell g_Board[g_Rows][g_Columns];
 
 // Declare your own functions here
-void MakeBoard();
-bool IsValidLocation(int col);
-int GetNextOpenRow(int col);
-void DropPiece(int row, int col, GridCell piece);
-bool WinningMove(GridCell piece);
-void PrintBoard();
-void DrawBoard();
+void MakeBoard(GridCell board[][g_Columns]);
+bool IsValidLocation(GridCell board[][g_Columns], int col);
+int GetNextOpenRow(GridCell board[][g_Columns], int col);
+void DropPiece(GridCell board[][g_Columns], int row, int col, GridCell piece);
+bool WinningMove(GridCell board[][g_Columns], GridCell piece);
+void PrintBoard(GridCell board[][g_Columns]);
+void DrawBoard(GridCell board[][g_Columns]);
+int ScorePosition(GridCell board[][g_Columns], GridCell piece);
+int PickBestMove(GridCell board[][g_Columns], GridCell piece);
+std::vector<int> GetValidLocations(GridCell board[][g_Columns]);
+int EvaluateWindow(std::vector<GridCell> window, GridCell piece);
+
+bool IsTerminalNode(GridCell board[][g_Columns]);
+std::pair<int, int> MiniMax(GridCell board[][g_Columns], int depth, int alpha, int beta, bool maximizingPlayer);
 
 #pragma endregion ownDeclarations
 
