@@ -1,11 +1,12 @@
 # **Connect 4 Game**
-## ** some text **
 I made this project for my GamePlay Programming Examn!
 School: HOWEST - DEA - second year
 
 ## **Game Overview**
 Connect 4 is a 2 player based game. The official board is with 6 rows and 7 columns, but this can be different if you'd like.
 The goal is to connect 4 disk/coins either horizontally, vertically or diagonally. 
+
+<img src="https://github.com/Gautjekski/Connect4Examn/blob/master/Connect4Game.PNG" alt="drawing" width="400"/>
 
 ## **Approach Making Game**
 First I had to make a connect 4 game, without an AI just the basic two player game. Each turn you switch from player1 to player2.
@@ -29,10 +30,62 @@ I calculate the score if the board has a 3 in a row then I add 5 to the score. i
 If the board has a 4 in a row this means the AI can win if he'd place the disk in this column, I add 9999 to the score. If the enemy/Player1 has 3 in a row I substract 4.
 I return the score.
 
-So now I have a scoring system. Then I decided to make an AI that makes choices in this boardstate. So he does not look in the future (I don't use the minimax function ***yet***).
+So now I have a scoring system. Then I decided to make an AI that makes choices in this boardstate. So he does not look in the future (I don't use the minimax algorithm ***yet***).
 I check this function for every column that isn't full. When I loop over every column I know wich one is the best to place the disk ***in this boardstate***.
 
 When this worked I had a semi smart bot/AI. The only problem is that you can easily trick him, becasue he cannot look in the future. It just finds the best column for that moment.
 
 Now I wanted to use the minimax algorithm. I found a pseudocode on the wikipedia so it was not that hard to implement. With this algorithm the AI is way smarter. It can look in the future, you only have to change the depth. The depth desides how ***far in the future it can look*** this algorithm is (O^n). This means its a slow algorithm but smart.
 Because this is an slow algorithm I searched for ways to reduce the time it needs to find the best column. I found the ***alpha-beta pruning*** method. This elminates branches that won't change the score, so this help a lot in time!
+
+## **Minimax Algorithm**
+
+<img src="https://user-images.githubusercontent.com/95616199/151162358-5196b563-0338-465e-867c-5118705a4f26.png" alt="drawing" width="650"/>
+
+So this is minimax algorithm I used, basically every time it goes down a level in depth it switches between min and max. When it is a at a **min** level it takes the minimum of its children. Max takes the max of its children. This algorithm is designed to get the best score, not the best column. So I had to modify the code a bit so tha algorithm remembers the best column.
+
+This is the pseudo code:
+```
+function  minimax(node, depth, maximizingPlayer) is
+    if depth = 0 or node is a terminal node then
+        return the heuristic value of node
+    if maximizingPlayer then
+        value := −∞
+        for each child of node do
+            value := max(value, minimax(child, depth − 1, FALSE))
+        return value
+    else (* minimizing player *)
+        value := +∞
+        for each child of node do
+            value := min(value, minimax(child, depth − 1, TRUE))
+        return value
+```
+## **Alpha-Beta pruning**
+
+![image](https://user-images.githubusercontent.com/95616199/151164263-7409fe98-a13b-4692-8252-540039ab75f2.png)
+
+This is an algorithm that prunes some branches of the minimax algorithm. By looking at the score it already has and based on that knows whether or not it'll affect the score, if not it won't Look in to that branch of the minimac algorithm.
+
+This is pseudo code:
+```
+function alphabeta(node, depth, α, β, maximizingPlayer) is
+    if depth = 0 or node is a terminal node then
+        return the heuristic value of node
+    if maximizingPlayer then
+        value := −∞
+        for each child of node do
+            value := max(value, alphabeta(child, depth − 1, α, β, FALSE))
+            if value ≥ β then
+                break (* β cutoff *)
+            α := max(α, value)
+        return value
+    else
+        value := +∞
+        for each child of node do
+            value := min(value, alphabeta(child, depth − 1, α, β, TRUE))
+            if value ≤ α then
+                break (* α cutoff *)
+            β := min(β, value)
+        return value
+```
+
