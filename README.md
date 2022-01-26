@@ -6,6 +6,8 @@ School: HOWEST - DEA - second year
 Connect 4 is a 2 player based game. The official board is with 6 rows and 7 columns, but this can be different if you'd like.
 The goal is to connect 4 disk/coins either horizontally, vertically or diagonally. 
 
+<img src="https://github.com/Gautjekski/Connect4Examn/blob/master/Connect4Game.PNG" alt="drawing" width="400"/>
+
 ## **Approach Making Game**
 First I had to make a connect 4 game, without an AI just the basic two player game. Each turn you switch from player1 to player2.
 I made this in the framework of Programming 1. I used this framework because it's easy to implement simple graphical shapes(squares and ellipses).
@@ -38,7 +40,7 @@ Because this is an slow algorithm I searched for ways to reduce the time it need
 
 ## **Minimax Algorithm**
 
-![image](https://user-images.githubusercontent.com/95616199/151162358-5196b563-0338-465e-867c-5118705a4f26.png)
+<img src="https://user-images.githubusercontent.com/95616199/151162358-5196b563-0338-465e-867c-5118705a4f26.png" alt="drawing" width="650"/>
 
 So this is minimax algorithm I used, basically every time it goes down a level in depth it switches between min and max. When it is a at a **min** level it takes the minimum of its children. Max takes the max of its children. This algorithm is designed to get the best score, not the best column. So I had to modify the code a bit so tha algorithm remembers the best column.
 
