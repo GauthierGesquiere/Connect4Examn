@@ -64,7 +64,7 @@ function  minimax(node, depth, maximizingPlayer) is
 
 ![image](https://user-images.githubusercontent.com/95616199/151164263-7409fe98-a13b-4692-8252-540039ab75f2.png)
 
-This is an algorithm that prunes some branches of the minimax algorithm. By looking at the score it already has and based on that knows whether or not it'll affect the score, if not it won't Look in to that branch of the minimax algorithm.
+This is an algorithm that prunes some branches of the minimax algorithm. By looking at the score it already has and based on that it knows whether or not it'll affect the score, if not it won't Look in to that branch of the minimax algorithm anymore.
 
 This is pseudo code:
 ```
